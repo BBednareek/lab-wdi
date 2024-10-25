@@ -9,4 +9,4 @@ int moduloInt(const IntPair pair) {return pair.a % pair.b;}
 float addFloat(const FloatPair pair) {return pair.a + pair.b;}
 float subtractFloat(const FloatPair pair) {return pair.a - pair.b;}
 float multiplyFloat(const FloatPair pair) {return pair.a * pair.b;}
-float divideFloat(const FloatPair pair) {return (pair.b != 0.0) ? pair.a / pair.b : 0;}
+float divideFloat(const FloatPair pair) {return (pair.b != 0) ? pair.a / pair.b : 0;}
