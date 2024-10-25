@@ -23,6 +23,7 @@ int main() {
 
         if (dataTypeChoice != 1 && dataTypeChoice != 2) {
             printf("Niepoprawny wybor typu danych.\n");
+            return 1;
         }
 
         if (dataTypeChoice == 1) {
@@ -63,6 +64,7 @@ int main() {
 
             if (operationChoice < 0 || operationChoice > 5) {
                 printf("Niepoprawny wybór operacji.\n");
+                return 1;
             }
 
             system("cls");
