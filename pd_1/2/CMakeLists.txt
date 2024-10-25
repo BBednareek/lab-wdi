@@ -8,4 +8,6 @@ add_executable(lab_wdi main.c
         includes/operations/operations.h
         includes/types/types.h
         includes/menu/menu.c
-        includes/menu/menu.h)
+        includes/menu/menu.h
+        includes/number_utils/number_utils.c
+        includes/number_utils/number_utils.h)

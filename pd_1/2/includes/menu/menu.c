@@ -13,7 +13,7 @@ void showOperationMenu(int dataTypeChoice) {
 
     printf("1. Dodawanie\n");
     printf("2. Odejmowanie\n");
-    printf("3. Mnożenie\n");
+    printf("3. Mnozenie\n");
     printf("4. Dzielenie\n");
     if(dataTypeChoice == 1) {
         printf("5. Modulo\n");
