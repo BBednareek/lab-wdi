@@ -10,7 +10,7 @@ int main() {
     inputData(&n, &k);
 
     if (!validateData(n, k)) {
-        printf("Bledne dane: n musi byc wieksze od k, a k > 0. Sprobuj ponownie.\n");
+        printf("Bledne dane. Sprobuj ponownie.\n");
         return 1;
     }
 
@@ -24,8 +24,12 @@ void inputData(int *n, int *k) {
     printf("Podaj wartosc n (n > k): ");
     scanf("%d", n);
 
+    printf("\n");
+
     printf("Podaj wartosc k (k > 0): ");
     scanf("%d", k);
+    
+    printf("\n");
 }
 
 int validateData(const int n, const int k) {
