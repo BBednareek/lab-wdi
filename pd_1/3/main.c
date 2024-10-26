@@ -1,49 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void inputData(int *n, int *k);
-int validateData(int n, int k);
-int countDividable(int n, int k);
 
 int main() {
     int n, k;
 
     inputData(&n, &k);
+    const int count = n/k;
 
-    if (!validateData(n, k)) {
-        printf("Bledne dane. Sprobuj ponownie.\n");
-        return 1;
-    }
-
-    const int count = countDividable(n, k);
     printf("Ilosc liczb od 1 do %d podzielnych przez %d wynosi: %d\n", n, k, count);
 
     return 0;
 }
 
 void inputData(int *n, int *k) {
-    printf("Podaj wartosc n (n > k): ");
-    scanf("%d", n);
+    char input[100];
+    char *endptr;
 
-    printf("\n");
+    do {
+        printf("Podaj wartosc n (n > 1): ");
+        fgets(input, sizeof(input), stdin);
 
-    printf("Podaj wartosc k (k > 0): ");
-    scanf("%d", k);
-    
-    printf("\n");
-}
+        *n = strtol(input, &endptr, 10);
 
-int validateData(const int n, const int k) {
-    return (n > k) && (k > 0);
-}
-
-int countDividable(const int n, const int k) {
-    int count = 0;
-    int i = 0;
-
-    for (i = 1; i <= n; i++) {
-        if (i % k == 0) {
-            count++;
+        if (*endptr != '\n' || *n <= 1) {
+            printf("Bledne dane. Wprowadz liczbe naturalna wieksza od 1.\n");
         }
+    } while (*endptr != '\n' || *n <= 1);
+
+    if (*n == 1) {
+        printf("Wartosc n musi byc wieksza od 1.\n");
+        return;
     }
-    return count;
+
+    do {
+        printf("Podaj wartosc k (0 < k < n): ");
+        fgets(input, sizeof(input), stdin);
+
+        *k = strtol(input, &endptr, 10);
+
+        if (*endptr != '\n' || *k <= 0 || *k >= *n) {
+            printf("Bledne dane. Wprowadz liczbe naturalna taka, ze 0 < k < n .\n");
+        }
+    } while (*endptr != '\n' || *k <= 0 || *k >= *n);
 }

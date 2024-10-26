@@ -41,3 +41,5 @@
 20	115	7516518096847655	CMakeFiles/lab_wdi.dir/includes/number_utils/number_utils.c.obj	4217826d01e4fd41
 7	112	7516520226838080	CMakeFiles/lab_wdi.dir/includes/number_utils/number_utils.c.obj	4217826d01e4fd41
 113	244	7516520227896082	lab_wdi.exe	df4549bdfc8a808
+6	101	7516528560806714	CMakeFiles/lab_wdi.dir/includes/operations/operations.c.obj	e295b87384e7c1a0
+102	259	7516528561765581	lab_wdi.exe	df4549bdfc8a808
