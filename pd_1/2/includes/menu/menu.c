@@ -6,9 +6,10 @@ void showTypeMenu() {
 
     printf("1. int\n");
     printf("2. float\n");
+    printf("3. Wyjdz z programu\n");
 }
 
-void showOperationMenu(int dataTypeChoice) {
+void showOperationMenu(const int dataTypeChoice) {
     printf("Wybierz dzialanie:\n");
 
     printf("1. Dodawanie\n");

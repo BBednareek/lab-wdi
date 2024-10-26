@@ -10,11 +10,16 @@
 int main() {
     int dataTypeChoice = 0, operationChoice = 0;
 
-    while(1) {
+    while (1) {
+        char input[100];
         showTypeMenu();
         printf("Podaj swoj wybor: ");
-        scanf("%d", &dataTypeChoice);
-        while (getchar() != '\n');
+        fgets(input, sizeof(input), stdin);
+
+        if (sscanf(input, "%d", &dataTypeChoice) != 1) {
+            printf("Niepoprawny wybor typu danych.\n");
+            continue;
+        }
 
         if (dataTypeChoice == 3) {
             printf("Program zakonczony. Do widzenia!");
@@ -23,15 +28,11 @@ int main() {
 
         if (dataTypeChoice != 1 && dataTypeChoice != 2) {
             printf("Niepoprawny wybor typu danych.\n");
-            return 1;
+            continue;
         }
 
         if (dataTypeChoice == 1) {
-            char input[100];
-            IntPair intPair;
-
-            intPair.a = 0;
-            intPair.b = 0;
+            IntPair intPair = {0, 0};
 
             printf("Podaj dwie liczby calkowite: ");
             fgets(input, sizeof(input), stdin);
@@ -40,17 +41,16 @@ int main() {
             const char *num2_str = strtok(NULL, " ");
 
             if (num1_str == NULL || num2_str == NULL) {
-                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby calkowite oddzielone spacja.");
-                return 1;
+                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby calkowite oddzielone spacja.\n");
+                continue;
             }
 
             const NumberType result1 = checkType(num1_str);
             const NumberType result2 = checkType(num2_str);
 
-
             if (result1 != INTEGER || result2 != INTEGER) {
-                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby calkowite oddzielnone spacja.");
-                return 1;
+                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby calkowite oddzielone spacja.\n");
+                continue;
             }
 
             intPair.a = convertInt(num1_str);
@@ -59,43 +59,38 @@ int main() {
             system("cls");
             showOperationMenu(dataTypeChoice);
             printf("Podaj swoj wybor: ");
-            scanf("%d", &operationChoice);
-            while (getchar() != '\n');
+            fgets(input, sizeof(input), stdin);
 
-            if (operationChoice < 0 || operationChoice > 5) {
-                printf("Niepoprawny wybór operacji.\n");
-                return 1;
+            if (sscanf(input, "%d", &operationChoice) != 1 || operationChoice < 0 || operationChoice > 5) {
+                printf("Niepoprawny wybor operacji.\n");
+                continue;
             }
 
             system("cls");
             switch (operationChoice) {
                 case 1:
                     printf("Wynik dodawania: %d\n", addInt(intPair));
-                break;
+                    break;
                 case 2:
                     printf("Wynik odejmowania: %d\n", subtractInt(intPair));
-                break;
+                    break;
                 case 3:
                     printf("Wynik mnozenia: %d\n", multiplyInt(intPair));
-                break;
+                    break;
                 case 4:
                     printf("Wynik dzielenia: %d\n", divideInt(intPair));
-                break;
+                    break;
                 case 5:
                     printf("Wynik dzielenia z reszta: %d\n", moduloInt(intPair));
-                break;
+                    break;
                 default:
                     printf("Niepoprawny wybor typu danych.\n");
-                break;
+                    break;
             }
         }
 
         if (dataTypeChoice == 2) {
-            char input[100];
-            FloatPair floatPair;
-
-            floatPair.a = 0;
-            floatPair.b = 0;
+            FloatPair floatPair = {0, 0};
 
             printf("Podaj dwie liczby zmiennoprzecinkowe: ");
             fgets(input, sizeof(input), stdin);
@@ -104,17 +99,16 @@ int main() {
             const char *num2_str = strtok(NULL, " ");
 
             if (num1_str == NULL || num2_str == NULL) {
-                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby zmiennoprzecinkowe oddzielone spacja.");
-                return 1;
+                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby zmiennoprzecinkowe oddzielone spacja.\n");
+                continue;
             }
 
             const NumberType result1 = checkType(num1_str);
             const NumberType result2 = checkType(num2_str);
 
-
             if (result1 != FLOAT || result2 != FLOAT) {
-                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby zmiennoprzecinkowe oddzielnone spacja.");
-                return 1;
+                printf("\nNieprawidlowe dane wejsciowe, podaj dwie liczby zmiennoprzecinkowe oddzielone spacja.\n");
+                continue;
             }
 
             floatPair.a = convertFloat(num1_str);
@@ -122,35 +116,35 @@ int main() {
 
             showOperationMenu(dataTypeChoice);
             printf("Podaj swoj wybor: ");
-            scanf("%d", &operationChoice);
-            while (getchar() != '\n');
+            fgets(input, sizeof(input), stdin);
 
-            if (operationChoice < 0 || operationChoice > 5) {
+            if (sscanf(input, "%d", &operationChoice) != 1 || operationChoice < 0 || operationChoice > 5) {
                 printf("Niepoprawny wybor operacji.\n");
-                return 1;
+                continue;
             }
 
             system("cls");
             switch (operationChoice) {
                 case 1:
                     printf("Wynik dodawania: %.2f\n", addFloat(floatPair));
-                break;
+                    break;
                 case 2:
                     printf("Wynik odejmowania: %.2f\n", subtractFloat(floatPair));
-                break;
+                    break;
                 case 3:
                     printf("Wynik mnozenia: %.2f\n", multiplyFloat(floatPair));
-                break;
+                    break;
                 case 4:
                     printf("Wynik dzielenia: %.2f\n", divideFloat(floatPair));
-                break;
+                    break;
                 default:
                     printf("Niepoprawny wybor operacji.\n");
-                break;
+                    break;
             }
         }
     }
     return 0;
 }
+
 
 
