@@ -16,7 +16,7 @@ int main() {
         printf("Podaj swoj wybor: ");
         fgets(input, sizeof(input), stdin);
 
-        if (sscanf(input, "%d", &dataTypeChoice) != 1) {
+        if (sscanf(input, "%d", &dataTypeChoice) != 1 || strlen(input) > 1) {
             printf("Niepoprawny wybor typu danych.\n");
             continue;
         }
