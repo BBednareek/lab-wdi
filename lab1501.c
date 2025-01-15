@@ -20,7 +20,7 @@ double srednia(int a, int b);
 int suma_tablica(const int tablica[], const int rozmiar);
 double srednia_tablica(const int tablica[], const int rozmiar);
 void wypisz(const int tablica[], const int rozmiar);
-int unikalne(const int tablica[], int tab_unikalnych[], int rozmiar);
+int unikalne(const int tablica[], int tab_unikalnych[], const int rozmiar);
 int nwd(int a, int b);
 void wypisz_od_konca(const int tablica[], int rozmiar);
 
